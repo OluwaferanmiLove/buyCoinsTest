@@ -94,9 +94,9 @@ function TransactionHistroy() {
 
   return (
     <SafeAreaView style={styles.main}>
-      {/* <View style={[styles.textContainer]}>
+      <View style={[styles.textContainer]}>
         <Text style={styles.text}>Transaction History</Text>
-      </View> */}
+      </View>
       <View style={styles.topContainer}>
         <Input
           placeholder={'Search'}
