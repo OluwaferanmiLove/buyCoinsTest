@@ -1,0 +1,17 @@
+type TransactionHistory {
+  id: ID!
+  status: String! @examples(values: ["Success", "Failed", "Pending"])
+  name: String! @fake(type: fullName , locale: en_GB)
+  type: String! @examples(values: ["Debit", "Credit"])
+  date: String @examples(values: ["2022-06-10T03:12:55Z", "2022-03-11T09:17:22Z", "2021-10-14T23:54:58Z", "2021-12-03T06:02:44Z", "2022-05-28T18:10:12Z"])
+}
+
+
+type Query {
+  transactionHistory(id: ID!): TransactionHistory
+  allTransactionHistory: [TransactionHistory!]! @listLength(min: 20, max: 30)
+}
+
+schema {
+  query: Query
+}
