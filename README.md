@@ -47,3 +47,5 @@ I use lodash utility package to group the data by date after pulling with graphQ
 ## Observation for Improvement
 
 Larger data will make the app slower because to implement the UI from the lo-fi wireframe require the use of `ScrollView` that renders the list all at once unlike `FlatList` that reders on continous scrolling.
+
+## Thamk you
