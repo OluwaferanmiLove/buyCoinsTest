@@ -24,7 +24,7 @@ Start the server at the root folder of the project and an SDL editor will be ope
 
     graphql-faker  --o ./schema.faker.graphql
 
-# CODE Explanation
+# Code Explanation
 
 Explanation of some part of my codebase
 
@@ -36,4 +36,14 @@ The file in this directory contain an utility file that help implement scalable 
       - constant
       - responsive-dimension.ts
 
+## Lodash utility package for grouping
 
+I use lodash utility package to group the data by date after pulling with graphQL 
+
+    const grouped = _.groupBy(data, history =>
+      moment(history.date).format('ddd D MMMM, yyyy'),
+    );
+
+## Observation for Improvement
+
+Larger data will make the app slower because to implement the UI from the lo-fi wireframe require the use of `ScrollView` that renders the list all at once unlike `FlatList` that reders on continous scrolling.
