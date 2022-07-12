@@ -35,13 +35,11 @@ function TransactionHistroy() {
       moment(history.date).format('ddd D MMMM, yyyy'),
     );
 
-    console.log(grouped);
     setGroupedHistory(grouped);
   };
 
   const {loading} = useQuery(FETCH_TRANSACTION_HISTORY, {
     onCompleted(data) {
-      console.log(data.allTransactionHistory);
       setAllHistory(data.allTransactionHistory);
       handleGrouping(data.allTransactionHistory);
     },
@@ -67,6 +65,12 @@ function TransactionHistroy() {
   };
 
   const handleFilter = (key: string, value: string) => {
+    if (activeFilter === value) {
+      handleGrouping(allHistroy);
+      setActiveFilter(null);
+      return;
+    }
+
     let newList = allHistroy.filter((data: any) => {
       return data[key].toLowerCase().includes(value.toLowerCase());
     });
@@ -75,7 +79,6 @@ function TransactionHistroy() {
       handleGrouping(allHistroy);
       setActiveFilter(null);
     } else {
-      console.log(newList);
       setActiveFilter(value);
       handleGrouping(newList);
     }
